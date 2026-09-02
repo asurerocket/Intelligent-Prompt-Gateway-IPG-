@@ -1,0 +1,22 @@
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+out/
+dist/
+**/out/
+**/dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+.vscode-test/
+
+# VSIX packages
+*.vsix

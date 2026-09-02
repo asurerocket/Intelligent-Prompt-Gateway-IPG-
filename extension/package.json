@@ -1,0 +1,398 @@
+{
+  "name": "ai-data-leakage-prevention-guard",
+  "displayName": "Rocket AI Shield",
+  "description": "Protect AI. Optimize AI. Govern AI. Local-first AI security and AI cost optimization for prompts, responses, and repositories.",
+  "version": "1.0.0",
+  "publisher": "local-security",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Security",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:aiDlpGuard.openDashboard",
+    "onCommand:aiDlpGuard.scanActiveEditor",
+    "onCommand:aiDlpGuard.scanActiveEditorDetailed",
+    "onCommand:aiDlpGuard.scanFileByPathDetailed",
+    "onCommand:aiDlpGuard.scanFolderByPathDetailed",
+    "onCommand:aiDlpGuard.revealSelectedTokenizedData",
+    "onCommand:aiDlpGuard.scanSelection",
+    "onCommand:aiDlpGuard.scanStagedChanges",
+    "onCommand:aiDlpGuard.commitWithScan",
+    "onCommand:rocketAiShield.openExecutiveDashboard",
+    "onCommand:rocketAiShield.inspectPrompt",
+    "onCommand:rocketAiShield.inspectResponse",
+    "onCommand:rocketAiShield.prepareClipboardForCopilot",
+    "onCommand:rocketAiShield.toggleCopilotClipboardGuard",
+    "onCommand:rocketAiShield.scanRepository",
+    "onCommand:rocketAiShield.scanPullRequest",
+    "onCommand:rocketAiShield.repositoryHealth",
+    "onCommand:rocketAiShield.openSocView",
+    "onCommand:rocketAiShield.aiRedTeamAssessment",
+    "onCommand:rocketAiShield.scanMcpServer",
+    "onCommand:rocketAiShield.llmSecurityAssessment",
+    "onCommand:rocketAiShield.generateDemoScenario",
+    "onCommand:rocketAiShield.exportAuditJson",
+    "onCommand:rocketAiShield.exportAuditCsv",
+    "onCommand:rocketAiShield.exportPolicy",
+    "onCommand:rocketAiShield.importPolicy",
+    "onCommand:rocketToken.askOptimized",
+    "onCommand:rocketToken.optimizeSelection",
+    "onCommand:rocketToken.optimizeActiveFile",
+    "onCommand:rocketToken.optimizeActiveFileFullContext",
+    "onCommand:rocketToken.openDashboard",
+    "onCommand:rocketToken.showReductionReport",
+    "onCommand:rocketToken.configureBudgets",
+    "onCommand:rocketToken.clearMetrics",
+    "onCommand:rocketToken.analyzeFile",
+    "onCommand:rocketToken.analyzeCurrentFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiDlpGuard.openDashboard",
+        "title": "AI DLP Guard: Open Security Dashboard"
+      },
+      {
+        "command": "aiDlpGuard.scanActiveEditor",
+        "title": "AI DLP Guard: Scan Active Editor"
+      },
+      {
+        "command": "aiDlpGuard.scanActiveEditorDetailed",
+        "title": "AI DLP Guard: Scan Active Editor (Detailed Findings)"
+      },
+      {
+        "command": "aiDlpGuard.scanFileByPathDetailed",
+        "title": "AI DLP Guard: Scan Any File Path (Detailed Findings)"
+      },
+      {
+        "command": "aiDlpGuard.scanFolderByPathDetailed",
+        "title": "AI DLP Guard: Scan Any Folder Path (Detailed Findings)"
+      },
+      {
+        "command": "aiDlpGuard.revealSelectedTokenizedData",
+        "title": "AI DLP Guard: Reveal Selected Tokenized Data"
+      },
+      {
+        "command": "aiDlpGuard.scanSelection",
+        "title": "AI DLP Guard: Scan Selected Text"
+      },
+      {
+        "command": "aiDlpGuard.scanStagedChanges",
+        "title": "AI DLP Guard: Scan Staged Changes"
+      },
+      {
+        "command": "aiDlpGuard.commitWithScan",
+        "title": "AI DLP Guard: Secure Commit (Scan then Commit)"
+      },
+      {
+        "command": "rocketAiShield.openExecutiveDashboard",
+        "title": "Rocket AI Shield: Open Executive Dashboard"
+      },
+      {
+        "command": "rocketAiShield.inspectPrompt",
+        "title": "Rocket AI Shield: Inspect Prompt (Input Firewall)"
+      },
+      {
+        "command": "rocketAiShield.inspectResponse",
+        "title": "Rocket AI Shield: Inspect AI Response (Output Firewall)"
+      },
+      {
+        "command": "rocketAiShield.prepareClipboardForCopilot",
+        "title": "Rocket AI Shield: Prepare Clipboard For Copilot Chat"
+      },
+      {
+        "command": "rocketAiShield.toggleCopilotClipboardGuard",
+        "title": "Rocket AI Shield: Toggle Copilot Clipboard Guard"
+      },
+      {
+        "command": "rocketAiShield.scanRepository",
+        "title": "Rocket AI Shield: Scan Entire Repository"
+      },
+      {
+        "command": "rocketAiShield.scanPullRequest",
+        "title": "Rocket AI Shield: Scan Pull Request Diff"
+      },
+      {
+        "command": "rocketAiShield.repositoryHealth",
+        "title": "Rocket AI Shield: Repository Security Health"
+      },
+      {
+        "command": "rocketAiShield.openSocView",
+        "title": "Rocket AI Shield: Open SOC View"
+      },
+      {
+        "command": "rocketAiShield.aiRedTeamAssessment",
+        "title": "Rocket AI Shield: AI Red Team Assessment"
+      },
+      {
+        "command": "rocketAiShield.scanMcpServer",
+        "title": "Rocket AI Shield: Scan MCP Server"
+      },
+      {
+        "command": "rocketAiShield.llmSecurityAssessment",
+        "title": "Rocket AI Shield: LLM Security Assessment"
+      },
+      {
+        "command": "rocketAiShield.generateDemoScenario",
+        "title": "Rocket AI Shield: Generate Demo Scenario"
+      },
+      {
+        "command": "rocketAiShield.exportAuditJson",
+        "title": "Rocket AI Shield: Export Audit JSON"
+      },
+      {
+        "command": "rocketAiShield.exportAuditCsv",
+        "title": "Rocket AI Shield: Export Audit CSV"
+      },
+      {
+        "command": "rocketAiShield.exportPolicy",
+        "title": "Rocket AI Shield: Export Policy"
+      },
+      {
+        "command": "rocketAiShield.importPolicy",
+        "title": "Rocket AI Shield: Import Policy"
+      },
+      {
+        "command": "rocketToken.askOptimized",
+        "title": "Rocket AI shield: Ask Optimized"
+      },
+      {
+        "command": "rocketToken.optimizeSelection",
+        "title": "Rocket AI shield: Optimize Selected Text"
+      },
+      {
+        "command": "rocketToken.optimizeActiveFile",
+        "title": "Rocket AI shield: Optimize Active File Context"
+      },
+      {
+        "command": "rocketToken.optimizeActiveFileFullContext",
+        "title": "Rocket AI shield: Optimize Active File (Full Context Demo)"
+      },
+      {
+        "command": "rocketToken.openDashboard",
+        "title": "Rocket AI shield: Open Token Dashboard"
+      },
+      {
+        "command": "rocketToken.showReductionReport",
+        "title": "Rocket AI shield: Show Last Reduction Report"
+      },
+      {
+        "command": "rocketToken.configureBudgets",
+        "title": "Rocket AI shield: Configure Token Budgets"
+      },
+      {
+        "command": "rocketToken.clearMetrics",
+        "title": "Rocket AI shield: Clear Metrics History"
+      },
+      {
+        "command": "rocketToken.analyzeFile",
+        "title": "Rocket AI shield: Analyze File (Query-Guided)"
+      },
+      {
+        "command": "rocketToken.analyzeCurrentFile",
+        "title": "Rocket AI shield: Analyze Current File"
+      }
+    ],
+    "configuration": {
+      "title": "AI Data Leakage Prevention Guard",
+      "properties": {
+        "aiDlpGuard.blockOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Block sensitive content at save time by sanitizing matched ranges."
+        },
+        "aiDlpGuard.blockOnCommit": {
+          "type": "boolean",
+          "default": true,
+          "description": "Require clean staged diff before secure commit command proceeds."
+        },
+        "aiDlpGuard.entropyThreshold": {
+          "type": "number",
+          "default": 4.5,
+          "minimum": 0,
+          "maximum": 8,
+          "description": "Entropy threshold for high-randomness token detection."
+        },
+        "aiDlpGuard.ignorePatterns": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "String patterns ignored by scanner."
+        },
+        "aiDlpGuard.blockThreshold": {
+          "type": "number",
+          "default": 0.85,
+          "description": "Score above this value is blocked."
+        },
+        "aiDlpGuard.warnThreshold": {
+          "type": "number",
+          "default": 0.65,
+          "description": "Score above this value is warned."
+        },
+        "aiDlpGuard.debounceMs": {
+          "type": "number",
+          "default": 250,
+          "minimum": 50,
+          "maximum": 2000,
+          "description": "Debounce window for typing-time scans."
+        },
+        "aiDlpGuard.userRole": {
+          "type": "string",
+          "default": "developer",
+          "enum": [
+            "developer",
+            "support",
+            "hr",
+            "finance",
+            "admin"
+          ],
+          "description": "Role used by Rocket AI Shield policy manager for allow/warn/block decisions."
+        },
+        "aiDlpGuard.autoPromptFirewallRealtime": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically run Prompt Firewall on typed/pasted editor content in realtime."
+        },
+        "aiDlpGuard.autoResponseFirewallRealtime": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically run Response Firewall on inserted editor content in realtime."
+        },
+        "aiDlpGuard.realtimeProvider": {
+          "type": "string",
+          "default": "copilot",
+          "description": "Provider label used for realtime firewall audit and policy decisions."
+        },
+        "aiDlpGuard.realtimeMinChars": {
+          "type": "number",
+          "default": 24,
+          "minimum": 8,
+          "maximum": 500,
+          "description": "Minimum changed text size before automatic realtime firewall inspection starts."
+        },
+        "aiDlpGuard.securityEngineMode": {
+          "type": "string",
+          "default": "fast",
+          "enum": [
+            "fast",
+            "balanced",
+            "strict"
+          ],
+          "description": "Security engine mode: fast=current scanner only, balanced=Presidio on risky files, strict=always dual-scan with Presidio when available."
+        },
+        "aiDlpGuard.presidioEndpoint": {
+          "type": "string",
+          "default": "http://127.0.0.1:8080/analyze",
+          "description": "Presidio analyzer endpoint used in balanced/strict modes."
+        },
+        "aiDlpGuard.presidioLanguage": {
+          "type": "string",
+          "default": "en",
+          "description": "Language sent to Presidio analyzer for NLP detection."
+        },
+        "aiDlpGuard.presidioScoreThreshold": {
+          "type": "number",
+          "default": 0.35,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum Presidio confidence score to include a finding."
+        },
+        "aiDlpGuard.presidioTimeoutMs": {
+          "type": "number",
+          "default": 2500,
+          "minimum": 300,
+          "maximum": 30000,
+          "description": "Timeout in milliseconds for Presidio analyze requests."
+        },
+        "aiDlpGuard.presidioMaxChars": {
+          "type": "number",
+          "default": 120000,
+          "minimum": 2000,
+          "maximum": 2000000,
+          "description": "Maximum text size sent to Presidio analyzer per scan to control latency."
+        },
+        "aiDlpGuard.tokenVaultEnabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Store encrypted reversible mappings for Tokenize Data placeholders in .rocket-ai-shield/token-vault.jsonl (key kept in VS Code SecretStorage)."
+        },
+        "rocketAIShield.autoOptimizeContext": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically optimize prompt/context text before running Prompt Firewall inspection."
+        },
+        "rocketAIShield.costPer1kTokensUsd": {
+          "type": "number",
+          "default": 0.002,
+          "minimum": 0,
+          "description": "Cost model used for AI Efficiency Dashboard estimated savings (USD per 1000 tokens)."
+        },
+        "rocketAIShield.smartContextScope": {
+          "type": "string",
+          "default": "activeFile",
+          "enum": [
+            "activeFile",
+            "workspace"
+          ],
+          "description": "Scope used by Build Smart Context: activeFile scans only the opened file; workspace uses top relevant files from the repository."
+        },
+        "rocketAIShield.clipboardGuardEnabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Continuously prepare clipboard content for Copilot chat by applying optimization and prompt firewall tokenization."
+        },
+        "rocketAIShield.clipboardGuardPollMs": {
+          "type": "number",
+          "default": 1200,
+          "minimum": 400,
+          "maximum": 5000,
+          "description": "Polling interval for clipboard middle-layer guard. Lower values are more responsive with higher CPU usage."
+        },
+        "rocketAIShield.clipboardGuardMinChars": {
+          "type": "number",
+          "default": 24,
+          "minimum": 8,
+          "maximum": 2000,
+          "description": "Minimum clipboard text length before automatic optimization/security processing starts."
+        },
+        "rocketAIShield.clipboardGuardProvider": {
+          "type": "string",
+          "default": "copilot",
+          "description": "Provider label used for policy and audit when preparing clipboard text for Copilot chat."
+        },
+        "rocketAIShield.clipboardGuardNotify": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show confirmation notifications when clipboard text is prepared by Rocket AI Shield."
+        },
+        "rocketAIShield.clipboardGuardShowBadge": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a live status-bar badge with before/after token reduction when clipboard text is secured for Copilot chat."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "compile-tests": "tsc -p ./tsconfig.test.json",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile && npm run compile-tests",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.88.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {}
+}

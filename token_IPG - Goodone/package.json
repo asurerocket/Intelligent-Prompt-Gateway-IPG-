@@ -1,0 +1,112 @@
+{
+  "name": "rocket-ai-shield",
+  "displayName": "Rocket AI shield",
+  "description": "Reduces tokens in prompts sent to GitHub Copilot via smart context compression.",
+  "version": "0.1.0",
+  "publisher": "rocket-software",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": ["AI", "Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "rocketToken.askOptimized",
+        "title": "Rocket AI shield: Ask Optimized"
+      },
+      {
+        "command": "rocketToken.optimizeSelection",
+        "title": "Rocket AI shield: Optimize Selected Text"
+      },
+      {
+        "command": "rocketToken.optimizeActiveFile",
+        "title": "Rocket AI shield: Optimize Active File Context"
+      },
+      {
+        "command": "rocketToken.optimizeActiveFileFullContext",
+        "title": "Rocket AI shield: Optimize Active File (Full Context Demo)"
+      },
+      {
+        "command": "rocketToken.openDashboard",
+        "title": "Rocket AI shield: Open Token Dashboard"
+      },
+      {
+        "command": "rocketToken.showReductionReport",
+        "title": "Rocket AI shield: Show Last Reduction Report"
+      },
+      {
+        "command": "rocketToken.configureBudgets",
+        "title": "Rocket AI shield: Configure Token Budgets"
+      },
+      {
+        "command": "rocketToken.clearMetrics",
+        "title": "Rocket AI shield: Clear Metrics History"
+      },
+      {
+        "command": "rocketToken.analyzeFile",
+        "title": "Rocket AI shield: Analyze File (Query-Guided)"
+      },
+      {
+        "command": "rocketToken.analyzeCurrentFile",
+        "title": "Rocket AI shield: Analyze Current File"
+      }
+    ],
+    "chatParticipants": [
+      {
+        "id": "rocket-optimize",
+        "name": "rocket-optimize",
+        "fullName": "Rocket AI shield",
+        "description": "Reduces context tokens before sending your question to the model."
+      }
+    ],
+    "configuration": {
+      "title": "Rocket AI shield",
+      "properties": {
+        "rocketToken.maxInputTokens": {
+          "type": "number",
+          "default": 6000,
+          "description": "Maximum input tokens to send to the model."
+        },
+        "rocketToken.contextFocusThresholdPercent": {
+          "type": "number",
+          "default": 50,
+          "description": "Run context focusing when token usage exceeds this % of budget."
+        },
+        "rocketToken.enableCompression": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable deep compression as final fallback."
+        },
+        "rocketToken.contextFocusTimeoutMs": {
+          "type": "number",
+          "default": 120,
+          "description": "Max time in ms allowed for context focusing before fallback."
+        },
+        "rocketToken.compressionTimeoutMs": {
+          "type": "number",
+          "default": 180,
+          "description": "Max time in ms allowed for compression before truncation fallback."
+        },
+        "rocketToken.costPer1kTokens": {
+          "type": "number",
+          "default": 0.002,
+          "description": "Estimated cost per 1,000 tokens in USD. Set this to your model's actual input token price to see accurate credit savings in the dashboard."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "powershell -NoProfile -Command \"if (Test-Path out) { Remove-Item -Recurse -Force out }; Get-ChildItem src -Recurse -Include *.js,*.js.map | Remove-Item -Force\"",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {}
+}

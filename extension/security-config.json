@@ -1,0 +1,8 @@
+{
+  "blockOnSave": true,
+  "blockOnCommit": true,
+  "entropyThreshold": 4.2,
+  "ignorePatterns": [],
+  "blockThreshold": 0.78,
+  "warnThreshold": 0.55
+}

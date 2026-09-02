@@ -1,0 +1,15 @@
+{
+  "name": "ai-data-leakage-prevention-guard-workspace",
+  "private": true,
+  "workspaces": [
+    "extension",
+    "token_IPG - Goodone"
+  ],
+  "scripts": {
+    "compile:extension": "npm --workspace extension run compile",
+    "compile:token-ipg": "npm --workspace \"token_IPG - Goodone\" run compile",
+    "compile:all": "npm run compile:extension && npm run compile:token-ipg",
+    "test:extension": "npm --workspace extension test",
+    "verify:all": "npm run compile:all && npm run test:extension && echo VERIFICATION_PASSED"
+  }
+}
